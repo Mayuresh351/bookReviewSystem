@@ -165,7 +165,7 @@ Access the API endpoints by running the given curl commands in the following sec
 | **Authorization** | JWT token required |
 | **Sample Input**  | `{"user_id": 1}` |
 | **Sample Output** | `{ "message": "Review deleted successfully" }` |
-| **Curl Command**  | `curl -X DELETE http://localhost:3000/books/1/reviews/1 -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"user_id" : 1}'` |
+| **Curl Command**  | `curl -X DELETE http://localhost:3000/books/reviews/1 -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"user_id" : 1}'` |
 
 ### 6.8 `GET /books/:id
 
