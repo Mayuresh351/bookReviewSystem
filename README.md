@@ -145,35 +145,35 @@ Access the API endpoints by running the given curl commands in the following sec
 | **Sample Output** | `{ "message": "Review added successfully" }` |
 | **Curl Command**  | `curl -X POST http://localhost:3000/books/1/reviews -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"user_id":1,"review":"Excellent!","rating":5}'` |
 
-### 6.6 `PUT /books/:id/reviews/:user_id` 
+### 6.6 `PUT /reviews/:id` 
 
 | Field             | Description |
 |------------------|-------------|
 | **Method**        | PUT |
 | **Purpose**       | Edits a user’s review for a book |
 | **Authorization** | JWT token required |
-| **Sample Input**  | `{ "review": "Updated review", "rating": 4 }` |
+| **Sample Input**  | `{ "user_id": 1, "review": "Updated review", "rating": 4 }` |
 | **Sample Output** | `{ "message": "Review updated successfully" }` |
-| **Curl Command**  | `curl -X PUT http://localhost:3000/books/1/reviews/1 -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"review":"Updated review","rating":4}'` |
+| **Curl Command**  | `curl -X PUT http://localhost:3000/reviews/1 -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"user_id":1, "review":"Updated review","rating":4}'` |
 
-### 6.7 `DELETE /books/:id/reviews/:user_id` 
+### 6.7 `DELETE /books/reviews/:id` 
 
 | Field             | Description |
 |------------------|-------------|
 | **Method**        | DELETE |
 | **Purpose**       | Deletes a user’s review for a book |
 | **Authorization** | JWT token required |
-| **Sample Input**  | `N/A` |
+| **Sample Input**  | `{"user_id": 1}` |
 | **Sample Output** | `{ "message": "Review deleted successfully" }` |
-| **Curl Command**  | `curl -X DELETE http://localhost:3000/books/1/reviews/1 -H "Authorization: Bearer <token>"` |
+| **Curl Command**  | `curl -X DELETE http://localhost:3000/books/1/reviews/1 -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"user_id" : 1}'` |
 
-### 6.8 `GET /user/:user_id/reviews
+### 6.8 `GET /books/:id
 
 | Field             | Description |
 |------------------|-------------|
 | **Method**        | GET |
-| **Purpose**       | Fetches all reviews submitted by a user |
+| **Purpose**       | Fetches all the description of a particular book |
 | **Authorization** | JWT token required |
 | **Sample Input**  | `N/A` |
-| **Sample Output** | `[ { "book_id": 1, "review": "Great!", "rating": 5 }, ... ]` |
-| **Curl Command**  | `curl -X GET http://localhost:3000/user/1/reviews -H "Authorization: Bearer <token>"` |
+| **Sample Output** | `{"book_name": "Chanakya Niti","author_name": "Chanakya","average_rating": "4.50",reviews": [{"rating": 5,"review":"Awesome. This certainly inspired me a lot.","user_id": 2},...]}` |
+| **Curl Command**  | `curl -X GET http://localhost:3000/books/1 -H "Authorization: Bearer <token>"` |
